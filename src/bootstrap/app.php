@@ -22,7 +22,7 @@ function bootstrap_start()
     try {
         bootstrap_start_app();
     } catch (Throwable $e) {
-        echo '<pre>' . h($e) . '</pre>';
+        echo '<body style="background-color: #eee; color: #555;"><pre style="line-height: 1.5rem;">' . h($e) . '</pre></body>';
     }
 }
 
@@ -37,15 +37,11 @@ function bootstrap_start_app()
         'sqlHistory' => [],
     ];
 
-    require_once APP_ROOT . '/env.php';
+    include APP_ROOT . '/env.php';
 
-    // ===== 接続 =====
-    try {
-        $pdo = new PDO('sqlite:' . $dbPath);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (Exception $e) {
-        die('DB接続エラー: ' . htmlspecialchars($e->getMessage()));
-    }
+    // DB接続
+    $pdo = new PDO('sqlite:' . $dbPath);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $app['pdo'] = $pdo;
 

@@ -6,15 +6,14 @@ function table_page()
 
     $tables = $app['tables'];
 
-    // ===== 入力取得 =====
     $table = $_GET['table'] ?? null;
 
-    // ===== 簡易バリデーション =====
+    // テーブル存在チェック
     if (!in_array($table, $tables)) {
-        die("Invalid table");
+        throw new Exception("Invalid table");
     }
 
-    list($columns, $rows) = getTableData($table);
+    $tableData = getTableData($table);
 
-    return layout('pages/table', compact('table', 'tables', 'columns', 'rows'));
+    return layout('pages/table', compact('table', 'tableData'));
 }

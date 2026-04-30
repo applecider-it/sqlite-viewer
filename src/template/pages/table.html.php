@@ -2,14 +2,14 @@
 
 <table>
     <tr>
-        <?php foreach ($data['columns'] as $col): ?>
+        <?php foreach ($data['tableData']['columns'] as $col): ?>
             <th><?= h($col) ?></th>
         <?php endforeach; ?>
     </tr>
 
-    <?php foreach ($data['rows'] as $row): ?>
+    <?php foreach ($data['tableData']['rows'] as $row): ?>
         <tr>
-            <?php foreach ($data['columns'] as $col): ?>
+            <?php foreach ($data['tableData']['columns'] as $col): ?>
                 <td><?= h($row[$col]) ?></td>
             <?php endforeach; ?>
         </tr>

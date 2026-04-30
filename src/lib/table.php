@@ -10,7 +10,7 @@ function getTables()
 }
 
 /** テーブルデータ取得 */
-function getTableData($table)
+function getTableData(string $table)
 {
     $info = fetchAll("PRAGMA table_info(" . sqlTable($table) . ")");
 
@@ -18,5 +18,5 @@ function getTableData($table)
 
     $rows = fetchAll("SELECT * FROM " . sqlTable($table) . " LIMIT ?", [500]);
 
-    return [$columns, $rows];
+    return compact('columns', 'rows');
 }
