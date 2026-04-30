@@ -3,11 +3,19 @@
 (function () {
     global $app;
 
+    // すべてのエラーが対象
+    error_reporting(E_ALL);
+
+    // エラーを例外にする
+    set_error_handler(function ($severity, $message, $file, $line) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+    });
+
     // サービスコンテナ
     $app = [
         'pdo' => null,
         'tables' => null,
-        'sqlHistory'=> [],
+        'sqlHistory' => [],
     ];
 
     define('APP_ROOT', dirname(__DIR__));
@@ -37,8 +45,10 @@
 
     $page = $_GET['page'] ?? null;
 
-    match ($page) {
+    $output = match ($page) {
         'table' => table_page(),
         default => index_page(),
     };
+
+    echo $output;
 })();

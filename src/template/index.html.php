@@ -1,5 +1,5 @@
-<?php view('partials/header'); ?>
+<?= view('partials/header'); ?>
 
 
 
-<?php view('partials/footer'); ?>
+<?= view('partials/footer'); ?>

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** 全件取得 */
 function fetchAll(string $sql, array $params = [])
 {

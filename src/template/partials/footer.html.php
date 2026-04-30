@@ -1,7 +1,7 @@
 </div>
 </div>
 
-<?php view('partials/trace'); ?>
+<?= view('partials/trace'); ?>
 
 </body>
 

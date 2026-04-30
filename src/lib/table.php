@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** テーブル一覧取得 */
 function getTables()
 {

@@ -16,5 +16,5 @@ function table_page()
 
     list($columns, $rows) = getTableData($table);
 
-    view('table', compact('table', 'tables', 'columns', 'rows'));
+    return view('table', compact('table', 'tables', 'columns', 'rows'));
 }
