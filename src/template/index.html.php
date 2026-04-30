@@ -10,10 +10,10 @@
 
     <h1>Tables</h1>
 
-    <?php include APP_ROOT . '/template/tables.html.php'; ?>
+    <?php view('tables', $data); ?>
 
-    <?php if ($table): ?>
-        <?php include APP_ROOT . '/template/table.html.php'; ?>
+    <?php if ($data['table']): ?>
+        <?php view('table', $data); ?>
     <?php endif; ?>
 
 </body>

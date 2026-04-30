@@ -1,5 +1,3 @@
 <?php
 
-define('APP_ROOT', dirname(__DIR__));
-
-require_once APP_ROOT . '/pages/index.php';
+require_once dirname(__DIR__) . '/bootstrap/app.php';

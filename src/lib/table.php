@@ -1,21 +1,20 @@
 <?php
 
 /** テーブル一覧取得 */
-function getTables($pdo)
+function getTables()
 {
-    $stmt = $pdo->query("SELECT name FROM sqlite_master WHERE type='table'");
-    return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $rows = fetchAll("SELECT name FROM sqlite_master WHERE type='table'");
+    return array_column($rows, 'name');
 }
 
 /** テーブルデータ取得 */
-function getTableData($pdo, $table)
+function getTableData($table)
 {
-    $stmt = $pdo->query("SELECT * FROM \"$table\" LIMIT 1");
-    $columns = array_keys($stmt->fetch(PDO::FETCH_ASSOC) ?: []);
+    $info = fetchAll("PRAGMA table_info(\"$table\")");
 
-    // もう一度取り直し
-    $stmt = $pdo->query("SELECT * FROM \"$table\" LIMIT 100");
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $columns = array_column($info, 'name');
+
+    $rows = fetchAll("SELECT * FROM \"$table\" LIMIT 500");
 
     return [$columns, $rows];
 }
