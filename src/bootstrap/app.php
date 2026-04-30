@@ -1,7 +1,7 @@
 <?php
 
 (function () {
-    global $pdo;
+    global $pdo, $tables;
 
     define('APP_ROOT', dirname(__DIR__));
 
@@ -9,6 +9,7 @@
     require_once APP_ROOT . '/lib/app.php';
 
     require_once APP_ROOT . '/pages/index_page.php';
+    require_once APP_ROOT . '/pages/table_page.php';
 
     require_once APP_ROOT . '/env.php';
 
@@ -20,7 +21,12 @@
         die('DB接続エラー: ' . htmlspecialchars($e->getMessage()));
     }
 
-    index_page();
+    $tables = getTables();
+
+    $page = $_GET['page'] ?? null;
+
+    match ($page) {
+        'table' => table_page(),
+        default => index_page(),
+    };
 })();
-
-

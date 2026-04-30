@@ -1,6 +1,7 @@
+<?php view('partials/header'); ?>
 <h2>Table: <?= h($data['table']) ?></h2>
 
-<table border="1" cellpadding="5">
+<table>
     <tr>
         <?php foreach ($data['columns'] as $col): ?>
             <th><?= h($col) ?></th>
@@ -15,3 +16,4 @@
         </tr>
     <?php endforeach; ?>
 </table>
+<?php view('partials/footer'); ?>

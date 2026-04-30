@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.nav {
+  background-color: #ddd;
+  padding: 0.5rem 1rem;
+}
+
+.container {
+  margin: 0;
+  display: flex;
+}
+
+.sidebar {
+  padding: 0.5rem;
+}
+
+.content {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.trace {
+  color: #6a6a6a;
+  font-size: 0.8rem;
+}
