@@ -1,4 +1,3 @@
-<?= view('partials/header'); ?>
 <h2>Table: <?= h($data['table']) ?></h2>
 
 <table>
@@ -16,4 +15,3 @@
         </tr>
     <?php endforeach; ?>
 </table>
-<?= view('partials/footer'); ?>

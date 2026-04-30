@@ -18,6 +18,14 @@ function view(string $name, array $data = [])
     return $output;
 }
 
+/** レイアウト付きView出力 */
+function layout(string $name, array $data = [])
+{
+    $output = view($name, $data);
+
+    return view('layout/app', ['CONTENT' => $output]);;
+}
+
 /** HTMLエスケープ */
 function h(mixed $text)
 {

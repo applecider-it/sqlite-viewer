@@ -2,5 +2,5 @@
 
 function index_page()
 {
-    return view('index');
+    return layout('pages/index');
 }

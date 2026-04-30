@@ -26,3 +26,12 @@ global $app;
             <?php endforeach; ?>
         </div>
         <div class="content">
+            <?= $data['CONTENT'] ?>
+        </div>
+    </div>
+
+    <?= view('partials/trace'); ?>
+
+</body>
+
+</html>

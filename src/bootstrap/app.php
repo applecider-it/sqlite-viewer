@@ -1,7 +1,8 @@
 <?php
 
-(function () {
-    global $app;
+function bootstrap_start()
+{
+    define('APP_ROOT', dirname(__DIR__));
 
     // すべてのエラーが対象
     error_reporting(E_ALL);
@@ -11,21 +12,30 @@
         throw new ErrorException($message, 0, $severity, $file, $line);
     });
 
-    // サービスコンテナ
-    $app = [
-        'pdo' => null,
-        'tables' => null,
-        'sqlHistory' => [],
-    ];
-
-    define('APP_ROOT', dirname(__DIR__));
-
     require_once APP_ROOT . '/lib/table.php';
     require_once APP_ROOT . '/lib/output.php';
     require_once APP_ROOT . '/lib/db.php';
 
     require_once APP_ROOT . '/pages/index_page.php';
     require_once APP_ROOT . '/pages/table_page.php';
+
+    try {
+        bootstrap_start_app();
+    } catch (Throwable $e) {
+        echo '<pre>' . h($e) . '</pre>';
+    }
+}
+
+function bootstrap_start_app()
+{
+    global $app;
+
+    // サービスコンテナ
+    $app = [
+        'pdo' => null,
+        'tables' => null,
+        'sqlHistory' => [],
+    ];
 
     require_once APP_ROOT . '/env.php';
 
@@ -51,4 +61,6 @@
     };
 
     echo $output;
-})();
+}
+
+bootstrap_start();
