@@ -7,8 +7,9 @@ port
 
 php: 8888
 
-
 -----------------------------------
+
+起動
 
 cd ~/workspace/github/sqlite-viewer/src
 
@@ -17,5 +18,15 @@ php -S localhost:8888 -t public
 ----
 
 http://127.0.0.1:8888/
+
+-----------------------------------
+
+セットアップ
+
+
+cd ~/workspace/github/sqlite-viewer/src
+
+cp env.example.php env.php
+
 
 -----------------------------------
