@@ -1,25 +1,13 @@
 <?php
 
-$sqlHistory = [];
-
-/** View出力 */
-function view(string $name, array $data = [])
-{
-    include APP_ROOT . '/template/' . $name . '.html.php';
-}
-
-/** HTMLエスケープ */
-function h(mixed $text)
-{
-    return htmlspecialchars((string)$text);
-}
-
 /** 全件取得 */
 function fetchAll(string $sql, array $params = [])
 {
-    global $pdo, $sqlHistory;
+    global $app;
 
-    $sqlHistory[] = compact('sql', 'params');
+    $pdo = $app['pdo'];
+
+    $app['sqlHistory'][] = compact('sql', 'params');
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);

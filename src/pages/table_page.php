@@ -2,7 +2,9 @@
 
 function table_page()
 {
-    global $tables;
+    global $app;
+
+    $tables = $app['tables'];
 
     // ===== 入力取得 =====
     $table = $_GET['table'] ?? null;

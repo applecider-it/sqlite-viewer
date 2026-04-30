@@ -1,12 +1,20 @@
 <?php
 
 (function () {
-    global $pdo, $tables;
+    global $app;
+
+    // サービスコンテナ
+    $app = [
+        'pdo' => null,
+        'tables' => null,
+        'sqlHistory'=> [],
+    ];
 
     define('APP_ROOT', dirname(__DIR__));
 
     require_once APP_ROOT . '/lib/table.php';
-    require_once APP_ROOT . '/lib/app.php';
+    require_once APP_ROOT . '/lib/output.php';
+    require_once APP_ROOT . '/lib/db.php';
 
     require_once APP_ROOT . '/pages/index_page.php';
     require_once APP_ROOT . '/pages/table_page.php';
@@ -21,7 +29,11 @@
         die('DB接続エラー: ' . htmlspecialchars($e->getMessage()));
     }
 
+    $app['pdo'] = $pdo;
+
     $tables = getTables();
+
+    $app['tables'] = $tables;
 
     $page = $_GET['page'] ?? null;
 

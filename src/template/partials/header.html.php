@@ -1,5 +1,5 @@
 <?php
-global $tables;
+global $app;
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ global $tables;
 
     <div class="container">
         <div class="sidebar">
-            <?php foreach ($tables as $t): ?>
+            <?php foreach ($app['tables'] as $t): ?>
                 <div><a href="?page=table&table=<?= urlencode($t) ?>"><?= h($t) ?></a></div>
             <?php endforeach; ?>
         </div>
