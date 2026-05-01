@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Pages;
+
+use function App\Lib\getTableData;
+use function App\Lib\layout;
+
 function table_page()
 {
     global $app;
@@ -10,7 +15,7 @@ function table_page()
 
     // テーブル存在チェック
     if (!in_array($table, $tables)) {
-        throw new Exception("Invalid table");
+        throw new \Exception("Invalid table");
     }
 
     $tableData = getTableData($table);

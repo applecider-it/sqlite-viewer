@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
+namespace App\Lib;
+
 /** View出力 */
 function view(string $name, array $data = [])
 {
     ob_start();
     try {
-        include APP_ROOT . '/template/' . $name . '.html.php';
-    } catch (Throwable $e) {
+        include APP_ROOT . '/resources/views/' . $name . '.html.php';
+    } catch (\Throwable $e) {
         ob_end_clean();
         throw $e;
     }
