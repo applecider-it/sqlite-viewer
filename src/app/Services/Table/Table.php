@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Lib;
+namespace App\Services\Table;
+
+use function App\Services\Core\fetchAll;
+use function App\Services\Core\sqlTable;
 
 /** テーブル一覧取得 */
 function getTables()

@@ -14,12 +14,12 @@ class Bootstrap
             throw new ErrorException($message, 0, $severity, $file, $line);
         });
 
-        require_once APP_ROOT . '/app/lib/table.php';
-        require_once APP_ROOT . '/app/lib/output.php';
-        require_once APP_ROOT . '/app/lib/db.php';
+        require_once APP_ROOT . '/app/Services/Table/Table.php';
+        require_once APP_ROOT . '/app/Services/Core/Output.php';
+        require_once APP_ROOT . '/app/Services/Core/DB.php';
 
-        require_once APP_ROOT . '/app/pages/index_page.php';
-        require_once APP_ROOT . '/app/pages/table_page.php';
+        require_once APP_ROOT . '/app/Controllers/IndexController.php';
+        require_once APP_ROOT . '/app/Controllers/TableController.php';
 
         require_once APP_ROOT . '/bootstrap/helpers.php';
 
@@ -49,15 +49,21 @@ class Bootstrap
 
         $app['pdo'] = $pdo;
 
-        $tables = App\Lib\getTables();
+        $tables = App\Services\Table\getTables();
 
         $app['tables'] = $tables;
+
+        self::execPage();
+    }
+
+    private static function execPage()
+    {
 
         $page = $_GET['page'] ?? null;
 
         $output = match ($page) {
-            'table' => App\Pages\table_page(),
-            default => App\Pages\index_page(),
+            'table' => App\Controllers\table_page(),
+            default => App\Controllers\index_page(),
         };
 
         echo $output;

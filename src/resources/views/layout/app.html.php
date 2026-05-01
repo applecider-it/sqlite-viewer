@@ -30,7 +30,7 @@ global $app;
         </div>
     </div>
 
-    <?= view('partials/trace'); ?>
+    <?= view('layout/partials/trace'); ?>
 
 </body>
 

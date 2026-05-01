@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Lib;
+namespace App\Services\Core;
 
 /** 全件取得 */
 function fetchAll(string $sql, array $params = [])

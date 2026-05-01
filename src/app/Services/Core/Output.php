@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Lib;
+namespace App\Services\Core;
 
 /** View出力 */
 function view(string $name, array $data = [])

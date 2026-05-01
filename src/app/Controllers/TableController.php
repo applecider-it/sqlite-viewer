@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Pages;
+namespace App\Controllers;
 
-use function App\Lib\getTableData;
-use function App\Lib\layout;
+use function App\Services\Table\getTableData;
+use function App\Services\Core\layout;
 
 function table_page()
 {
@@ -20,5 +20,5 @@ function table_page()
 
     $tableData = getTableData($table);
 
-    return layout('pages/table', compact('table', 'tableData'));
+    return layout('table/table', compact('table', 'tableData'));
 }
