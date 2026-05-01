@@ -1,4 +1,4 @@
-# SQLITEビューアー
+# Sqliteビューアー
 
-SQLITEの参照がしずらいwsl環境用
+Sqliteの参照がしづらいwsl環境用
 
