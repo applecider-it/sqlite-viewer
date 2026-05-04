@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Services\Core;
 
+use App\Services\Core\App;
+
 /** 全件取得 */
 function fetchAll(string $sql, array $params = [])
 {
-    global $app;
+    $pdo = App::$data['pdo'];
 
-    $pdo = $app['pdo'];
-
-    $app['sqlHistory'][] = compact('sql', 'params');
+    App::$data['sqlHistory'][] = compact('sql', 'params');
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);

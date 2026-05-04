@@ -6,6 +6,8 @@ namespace App\Services\Core;
 
 use function App\Services\Table\getTables;
 
+use App\Services\Core\App;
+
 class Start
 {
     public static function start()
@@ -19,26 +21,17 @@ class Start
 
     private static function exec()
     {
-        global $app;
-
-        // サービスコンテナ
-        $app = [
-            'pdo' => null,
-            'tables' => null,
-            'sqlHistory' => [],
-        ];
-
         include APP_ROOT . '/env.php';
 
         // DB接続
         $pdo = new \PDO('sqlite:' . $dbPath);
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-        $app['pdo'] = $pdo;
+        App::$data['pdo'] = $pdo;
 
         $tables = getTables();
 
-        $app['tables'] = $tables;
+        App::$data['tables'] = $tables;
 
         self::execPage();
     }

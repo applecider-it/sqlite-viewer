@@ -5,11 +5,11 @@ namespace App\Controllers;
 use function App\Services\Table\getTableData;
 use function App\Services\Core\layout;
 
+use App\Services\Core\App;
+
 function table_page()
 {
-    global $app;
-
-    $tables = $app['tables'];
+    $tables = App::$data['tables'];
 
     $table = $_GET['table'] ?? null;
 
