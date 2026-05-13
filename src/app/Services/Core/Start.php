@@ -4,22 +4,13 @@ declare(strict_types=1);
 
 namespace App\Services\Core;
 
-use function App\Services\Table\getTables;
+use App\Services\Table\Table;
 
 use App\Services\Core\App;
 
 class Start
 {
-    public static function start()
-    {
-        try {
-            self::exec();
-        } catch (\Throwable $e) {
-            echo '<body style="background-color: #eee; color: #555;"><pre style="line-height: 1.5rem;">' . h($e) . '</pre></body>';
-        }
-    }
-
-    private static function exec()
+    public static function init()
     {
         include APP_ROOT . '/env.php';
 
@@ -28,21 +19,28 @@ class Start
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         App::$data['pdo'] = $pdo;
+    }
 
-        $tables = getTables();
+    public static function web()
+    {
+        try {
+            self::execWeb();
+        } catch (\Throwable $e) {
+            echo '<body style="background-color: #eee; color: #555;"><pre style="line-height: 1.5rem;">' . h($e) . '</pre></body>';
+        }
+    }
+
+    private static function execWeb()
+    {
+        $tables = Table::getTables();
 
         App::$data['tables'] = $tables;
 
-        self::execPage();
-    }
-
-    private static function execPage()
-    {
         $page = $_GET['page'] ?? null;
 
         $output = match ($page) {
-            'table' => \App\Controllers\table_page(),
-            default => \App\Controllers\index_page(),
+            'table' => \App\Controllers\TableController::table(),
+            default => \App\Controllers\IndexController::index(),
         };
 
         echo $output;

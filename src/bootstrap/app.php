@@ -11,15 +11,7 @@
         throw new ErrorException($message, 0, $severity, $file, $line);
     });
 
-    require_once APP_ROOT . '/app/Services/Core/App.php';
-    require_once APP_ROOT . '/app/Services/Core/Output.php';
-    require_once APP_ROOT . '/app/Services/Core/DB.php';
-    require_once APP_ROOT . '/app/Services/Core/Start.php';
-
-    require_once APP_ROOT . '/app/Services/Table/Table.php';
-
-    require_once APP_ROOT . '/app/Controllers/IndexController.php';
-    require_once APP_ROOT . '/app/Controllers/TableController.php';
-
     require_once APP_ROOT . '/app/helpers.php';
+
+    App\Services\Core\Start::init();
 })();

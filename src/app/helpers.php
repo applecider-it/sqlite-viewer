@@ -1,11 +1,13 @@
 <?php
 
+use App\Services\Core\Output;
+
 function h(mixed $val)
 {
-    return App\Services\Core\h($val);
+    return Output::h($val);
 }
 
 function view(string $name, array $data = [])
 {
-    return App\Services\Core\view($name, $data);
+    return Output::view($name, $data);
 }

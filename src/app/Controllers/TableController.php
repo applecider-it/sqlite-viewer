@@ -2,23 +2,25 @@
 
 namespace App\Controllers;
 
-use function App\Services\Table\getTableData;
-use function App\Services\Core\layout;
+use App\Services\Table\Table;
+use App\Services\Core\Output;
 
 use App\Services\Core\App;
 
-function table_page()
-{
-    $tables = App::$data['tables'];
+class TableController{
+    public static function table()
+    {
+        $tables = App::$data['tables'];
 
-    $table = $_GET['table'] ?? null;
+        $table = $_GET['table'] ?? null;
 
-    // テーブル存在チェック
-    if (!in_array($table, $tables)) {
-        throw new \Exception("Invalid table");
+        // テーブル存在チェック
+        if (!in_array($table, $tables)) {
+            throw new \Exception("Invalid table");
+        }
+
+        $tableData = Table::getTableData($table);
+
+        return Output::layout('table/table', compact('table', 'tableData'));
     }
-
-    $tableData = getTableData($table);
-
-    return layout('table/table', compact('table', 'tableData'));
 }

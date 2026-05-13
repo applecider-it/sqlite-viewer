@@ -28,5 +28,6 @@ cd ~/workspace/github/sqlite-viewer/src
 
 cp env.example.php env.php
 
+composer install
 
 -----------------------------------

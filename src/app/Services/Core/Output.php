@@ -4,32 +4,35 @@ declare(strict_types=1);
 
 namespace App\Services\Core;
 
-/** View出力 */
-function view(string $name, array $data = [])
+class Output
 {
-    ob_start();
-    try {
-        include APP_ROOT . '/resources/views/' . $name . '.html.php';
-    } catch (\Throwable $e) {
+    /** View出力 */
+    public static function view(string $name, array $data = [])
+    {
+        ob_start();
+        try {
+            include APP_ROOT . '/resources/views/' . $name . '.html.php';
+        } catch (\Throwable $e) {
+            ob_end_clean();
+            throw $e;
+        }
+        $output = ob_get_contents();
         ob_end_clean();
-        throw $e;
+
+        return $output;
     }
-    $output = ob_get_contents();
-    ob_end_clean();
 
-    return $output;
-}
+    /** レイアウト付きView出力 */
+    public static function layout(string $name, array $data = [])
+    {
+        $output = view($name, $data);
 
-/** レイアウト付きView出力 */
-function layout(string $name, array $data = [])
-{
-    $output = view($name, $data);
+        return view('layout/app', ['CONTENT' => $output]);;
+    }
 
-    return view('layout/app', ['CONTENT' => $output]);;
-}
-
-/** HTMLエスケープ */
-function h(mixed $text)
-{
-    return htmlspecialchars((string)$text);
+    /** HTMLエスケープ */
+    public static function h(mixed $text)
+    {
+        return htmlspecialchars((string)$text);
+    }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
-use function App\Services\Core\layout;
+use App\Services\Core\Output;
 
-function index_page()
-{
-    return layout('index/index');
+class IndexController{
+    public static function index()
+    {
+        return Output::layout('index/index');
+    }
 }
