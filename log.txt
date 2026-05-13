@@ -3,3 +3,7 @@ composer create-project laravel/laravel myapp
 
 php artisan make:controller HomeController
 
+
+composer require barryvdh/laravel-debugbar --dev
+
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
