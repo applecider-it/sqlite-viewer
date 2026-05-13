@@ -11,6 +11,7 @@ class InfoService
         return DB::connection('target_database');
     }
 
+    /** テーブル一覧 */
     public function tables()
     {
         $rows = $this->db()->select("SELECT name FROM sqlite_master WHERE type='table'");
@@ -18,6 +19,7 @@ class InfoService
         return array_column($rows, 'name');
     }
 
+    /** テーブル詳細 */
     public function tableColumns(string $table)
     {
         $rows = $this->db()->select("PRAGMA table_info(" . $table . ")");
@@ -25,12 +27,5 @@ class InfoService
         $columns = array_column($rows, 'name');
 
         return $columns;
-    }
-
-    public function getList(string $table)
-    {
-        $rows = $this->db()->select("SELECT * FROM " . $table . " LIMIT 500");
-
-        return $rows;
     }
 }

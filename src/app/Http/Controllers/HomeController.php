@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\DBTable\InfoService;
+use App\Services\DBTable\ListService;
 
 class HomeController extends Controller
 {
-    function __construct(private InfoService $infoService) {}
+    function __construct(
+        private InfoService $infoService,
+        private ListService $listService,
+    ) {}
 
     public function index()
     {
@@ -28,7 +32,7 @@ class HomeController extends Controller
 
         $columns = $this->infoService->tableColumns($table);
 
-        $list = $this->infoService->getList($table);
+        $list = $this->listService->getList($table);
 
         return view('home.table', compact('table', 'columns', 'list'));
     }
