@@ -22,7 +22,7 @@ use App\Services\Core\App;
 
     <div class="container">
         <div class="sidebar">
-            <?php foreach (App::$data['tables'] as $t): ?>
+            <?php foreach (App::get('tables') as $t): ?>
                 <div><a href="?page=table&table=<?= urlencode($t) ?>"><?= h($t) ?></a></div>
             <?php endforeach; ?>
         </div>

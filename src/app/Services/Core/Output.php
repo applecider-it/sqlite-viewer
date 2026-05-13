@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services\Core;
 
+/**
+ * 出力関連
+ */
 class Output
 {
     /** View出力 */

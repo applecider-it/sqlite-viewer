@@ -2,6 +2,11 @@
 
 use App\Services\Core\Output;
 
+/*
+ * ヘルパー関数
+ */
+
+
 function h(mixed $val)
 {
     return Output::h($val);

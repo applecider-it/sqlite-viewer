@@ -7,10 +7,13 @@ use App\Services\Core\Output;
 
 use App\Services\Core\App;
 
+/**
+ * テーブル管理コントローラー
+ */
 class TableController{
     public static function table()
     {
-        $tables = App::$data['tables'];
+        $tables = App::get('tables');
 
         $table = $_GET['table'] ?? null;
 

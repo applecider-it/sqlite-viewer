@@ -6,14 +6,17 @@ namespace App\Services\Core;
 
 use App\Services\Core\App;
 
+/**
+ * DB管理
+ */
 class DB
 {
     /** 全件取得 */
     public static function fetchAll(string $sql, array $params = [])
     {
-        $pdo = App::$data['pdo'];
+        $pdo = App::get('pdo');
 
-        App::$data['sqlHistory'][] = compact('sql', 'params');
+        App::push('sqlHistory', compact('sql', 'params'));
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);

@@ -8,6 +8,9 @@ use App\Services\Table\Table;
 
 use App\Services\Core\App;
 
+/**
+ * 起動関連
+ */
 class Start
 {
     public static function init()
@@ -18,7 +21,7 @@ class Start
         $pdo = new \PDO('sqlite:' . $dbPath);
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-        App::$data['pdo'] = $pdo;
+        App::set('pdo', $pdo);
     }
 
     public static function web()
@@ -34,13 +37,13 @@ class Start
     {
         $tables = Table::getTables();
 
-        App::$data['tables'] = $tables;
+        App::set('tables', $tables);
 
         $page = $_GET['page'] ?? null;
 
         $output = match ($page) {
             'table' => \App\Controllers\TableController::table(),
-            default => \App\Controllers\IndexController::index(),
+            default => \App\Controllers\HomeController::index(),
         };
 
         echo $output;

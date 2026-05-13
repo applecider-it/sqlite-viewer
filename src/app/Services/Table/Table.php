@@ -6,6 +6,9 @@ namespace App\Services\Table;
 
 use App\Services\Core\DB;
 
+/**
+ * DBテーブル関連
+ */
 class Table
 {
     /** テーブル一覧取得 */
