@@ -21,6 +21,18 @@ http://127.0.0.1:8888/
 
 -----------------------------------
 
+Laravel
+
+cd ~/workspace/github/sqlite-viewer/myapp
+
+composer dev
+
+----
+
+http://127.0.0.1:8000
+
+-----------------------------------
+
 セットアップ
 
 
@@ -29,5 +41,14 @@ cd ~/workspace/github/sqlite-viewer/src
 cp env.example.php env.php
 
 composer install
+
+
+cd ~/workspace/github/sqlite-viewer/myapp
+
+cp .env.example .env
+
+composer install
+
+npm ci
 
 -----------------------------------
