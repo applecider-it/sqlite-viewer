@@ -11,7 +11,7 @@ php: 8000
 
 Laravel
 
-cd ~/workspace/github/sqlite-viewer/myapp
+cd ~/workspace/github/sqlite-viewer/src
 
 composer dev
 
@@ -24,7 +24,7 @@ http://127.0.0.1:8000
 セットアップ
 
 
-cd ~/workspace/github/sqlite-viewer/myapp
+cd ~/workspace/github/sqlite-viewer/src
 
 
 composer install
