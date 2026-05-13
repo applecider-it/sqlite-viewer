@@ -1,3 +1,5 @@
 
 composer create-project laravel/laravel myapp
 
+php artisan make:controller HomeController
+

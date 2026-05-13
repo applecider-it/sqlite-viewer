@@ -45,10 +45,15 @@ composer install
 
 cd ~/workspace/github/sqlite-viewer/myapp
 
-cp .env.example .env
 
 composer install
 
 npm ci
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
 
 -----------------------------------
