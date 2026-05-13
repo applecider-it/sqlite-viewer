@@ -2,15 +2,11 @@
 
 namespace App\Services\DBTable;
 
-use Illuminate\Support\Facades\DB;
-
-class InfoService
+/**
+ * DBテーブル情報管理
+ */
+class InfoService extends BaseService
 {
-    private function db()
-    {
-        return DB::connection('target_database');
-    }
-
     /** テーブル一覧 */
     public function tables()
     {

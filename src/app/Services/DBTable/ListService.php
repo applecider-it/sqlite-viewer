@@ -2,15 +2,11 @@
 
 namespace App\Services\DBTable;
 
-use Illuminate\Support\Facades\DB;
-
-class ListService
+/**
+ * DBテーブル一覧管理
+ */
+class ListService extends BaseService
 {
-    private function db()
-    {
-        return DB::connection('target_database');
-    }
-
     /** 一覧 */
     public function getList(string $table)
     {
