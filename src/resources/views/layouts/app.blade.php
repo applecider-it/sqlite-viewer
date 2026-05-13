@@ -17,9 +17,11 @@
         <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
             
             <!-- Logo / Title -->
-            <h1 class="text-xl font-bold">
-                {{ config('app.name', 'Laravel') }}
-            </h1>
+            <a href="/">
+                <h1 class="text-xl font-bold">
+                    {{ config('app.name', 'Laravel') }}
+                </h1>
+            </a>
 
             <!-- Navigation -->
             <nav class="flex gap-6">

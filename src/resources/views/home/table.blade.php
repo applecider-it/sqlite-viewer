@@ -2,14 +2,12 @@
 
 @section('content')
 
-<div class="max-w-4xl mx-auto">
-
-    <!-- Title -->
-    <div class="mb-6">
-        <h2 class="text-3xl font-bold text-gray-800">
-            テーブル {{ $table }}
-        </h2>
-    </div>
+<!-- Title -->
+<div class="mb-6">
+    <h2 class="text-3xl font-bold text-gray-800">
+        テーブル {{ $table }}
+    </h2>
+</div>
 
 <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
 
@@ -62,8 +60,6 @@
         </tbody>
 
     </table>
-
-</div>
 
 </div>
 
