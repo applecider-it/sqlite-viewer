@@ -26,6 +26,10 @@ class HomeController extends Controller
             throw new \Exception("Invalid table");
         }
 
-        return view('home.table', compact('tables'));
+        $columns = $this->infoService->tableColumns($table);
+
+        $list = $this->infoService->getList($table);
+
+        return view('home.table', compact('table', 'columns', 'list'));
     }
 }

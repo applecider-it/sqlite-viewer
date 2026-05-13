@@ -7,47 +7,63 @@
     <!-- Title -->
     <div class="mb-6">
         <h2 class="text-3xl font-bold text-gray-800">
-            テーブル一覧
+            テーブル {{ $table }}
         </h2>
-
-        <p class="mt-2 text-gray-500">
-            データベース内のテーブルを表示しています
-        </p>
     </div>
 
-    <!-- Table List -->
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
 
-        @foreach ($tables as $table)
+    <table class="min-w-full divide-y divide-gray-200">
 
-            <a
-                href="/table/{{ $table }}"
-                class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg"
-            >
-                <div class="flex items-center justify-between">
-
-                    <div>
-                        <p class="text-sm text-gray-400">
-                            TABLE
-                        </p>
-
-                        <h3 class="mt-1 text-lg font-semibold text-gray-800 group-hover:text-blue-600">
-                            {{ $table }}
-                        </h3>
-                    </div>
-
-                    <div
-                        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+        <!-- Header -->
+        <thead class="bg-gray-50">
+            <tr>
+                @foreach ($columns as $column)
+                    <th
+                        class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider text-gray-600"
                     >
-                        →
-                    </div>
+                        {{ $column }}
+                    </th>
+                @endforeach
+            </tr>
+        </thead>
 
-                </div>
-            </a>
+        <!-- Body -->
+        <tbody class="divide-y divide-gray-100 bg-white">
 
-        @endforeach
+            @foreach ($list as $row)
 
-    </div>
+                <tr class="transition hover:bg-blue-50">
+
+                    @foreach ($columns as $column)
+
+                        <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
+
+                            @php
+                                $value = $row->$column;
+                            @endphp
+
+                            @if (is_null($value))
+                                <span class="text-gray-400 italic">
+                                    NULL
+                                </span>
+                            @else
+                                {{ Str::limit($value, 80) }}
+                            @endif
+
+                        </td>
+
+                    @endforeach
+
+                </tr>
+
+            @endforeach
+
+        </tbody>
+
+    </table>
+
+</div>
 
 </div>
 
