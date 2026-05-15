@@ -33,6 +33,8 @@ npm ci
 
 cp .env.example .env
 
+APP_TARGET_DATABASE変更
+
 php artisan key:generate
 
 php artisan migrate
