@@ -10,7 +10,9 @@ class ListService extends BaseService
     /** 一覧 */
     public function getList(string $table)
     {
-        $rows = $this->db()->select("SELECT * FROM " . $table . " LIMIT 500");
+        $rows = $this->db()->table($table)
+            ->limit(500)
+            ->get();
 
         return $rows;
     }

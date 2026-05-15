@@ -23,10 +23,8 @@ class HomeController extends Controller
 
     public function table(string $table)
     {
-        $tables = $this->infoService->tables();
-
         // テーブル存在チェック
-        if (!in_array($table, $tables)) {
+        if (!$this->infoService->existsTable($table)) {
             throw new \Exception("Invalid table");
         }
 

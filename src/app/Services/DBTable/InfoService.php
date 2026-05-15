@@ -8,20 +8,25 @@ namespace App\Services\DBTable;
 class InfoService extends BaseService
 {
     /** テーブル一覧 */
-    public function tables()
+    public function tables(): array
     {
-        $rows = $this->db()->select("SELECT name FROM sqlite_master WHERE type='table'");
-
-        return array_column($rows, 'name');
+        return array_column(
+            $this->db()->getSchemaBuilder()->getTables(),
+            'name'
+        );
     }
 
     /** テーブル詳細 */
     public function tableColumns(string $table)
     {
-        $rows = $this->db()->select("PRAGMA table_info(" . $table . ")");
+        return $this->db()->getSchemaBuilder()->getColumnListing($table);
+    }
 
-        $columns = array_column($rows, 'name');
+    /** テーブルが存在するか確認 */
+    public function existsTable(string $table)
+    {
+        $tables = $this->tables();
 
-        return $columns;
+        return in_array($table, $tables);
     }
 }

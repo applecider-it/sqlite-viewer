@@ -11,6 +11,6 @@ class BaseService
 {
     protected function db()
     {
-        return DB::connection('target_database');
+        return DB::connection(config('myapp.DBConnectionKey'));
     }
 }
